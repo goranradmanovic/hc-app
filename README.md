@@ -7,9 +7,9 @@ It provides core functionality for patient selection and the dynamic display of 
 
 ### Desktop Screenshots
 
-![Desktop 1](./xe/src/assets/images/preview/desktop/desktop.webp "Desktop Image")
+![Desktop 1](./assets/images/preview/desktop/desktop.webp "Desktop Image")
 
 
 ### Mobile Screenshots
 
-![Mobile 1](./xe/src/assets/images/preview/mobile/mob.webp "Mobile Image")
+![Mobile 1](./assets/images/preview/mobile/mob.webp "Mobile Image")
