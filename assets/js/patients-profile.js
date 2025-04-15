@@ -17,6 +17,7 @@ function updatePatientProfile(patientData) {
                     updateText('.value.birth', formatDate(patientData.date_of_birth));
                     break;
                 case 'Gender':
+                    updateImage('.gender-icon', `./assets/images/${patientData.gender}.svg`);
                     updateText('.value.gender', patientData.gender);
                     break;
                 case 'Contact Info.':
