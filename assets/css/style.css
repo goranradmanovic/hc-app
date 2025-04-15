@@ -1,0 +1,846 @@
+/* Root Variables and Design System */
+:root {
+    /* Colors */
+    --unnamed-color-705aaa: #E66FF4; /* Systolic Purple */
+    --unnamed-color-cbc8d4: #CBC8D4; /* Light Grey/Purple */
+    --activestate_bg_2: #E0F7FA; /* Cyan Light Background */
+    --activestate_bg_1: #01F0D0; /* Cyan Text/Border */
+    --unnamed-color-0bd984: #0BD984; /* Green (Trend Up / Normal Status) */
+    --unnamed-color-072635: #072635; /* Very Dark Blue/Black (Primary Text) */
+    --unnamed-color-0c3d5d: #0C3D5D; /* Dark Blue */
+    --unnamed-color-084c77: #084C77; /* Dark Blue */
+    --unnamed-color-055a92: #055A92; /* Dark Blue */
+    --unnamed-color-006aac: #006AAC; /* Blue */
+    --unnamed-color-007bc7: #007BC7; /* Blue (Main Nav Active BG, Logo) */
+    --unnamed-color-707070: #707070; /* Medium Grey (Secondary Text, Icons) */
+    --unnamed-color-f6f6f6: #F6F6F6; /* Very Light Grey (Body Background) */
+    --unnamed-color-ededed: #EDEDED; /* Light Grey (Borders) */
+    --unnamed-color-000000: #000000; /* Black */
+    --unnamed-color-878787: #878787; /* Grey */
+    --unnamed-color-ffffff: #FFFFFF; /* White (Card Backgrounds, Nav Active Text) */
+    --unnamed-color-ff6200: #FF6200; /* Orange */
+    --color-diastolic-pink: #705AAA; /* Diastolic Pink */
+    --color-temperature-red: #FFE6E9; /* Temperature Red */
+    --color-respiratory-blue: #03A9F4; /* Respiratory Blue */
+    --color-heart-pink: #FFE6F1; /* Heart Pink */
+    --color-trend-down-red: #DC3545; /* Trend Down Red */
+
+    /* Backgrounds for Info Cards */
+    --bg-chart: #F4F0FE; /* Light Lavender */
+    --bg-respiratory: #F0F8FF; /* Light Blue */
+    --bg-temperature: #FFF0F1; /* Light Red/Pink */
+    --bg-heart-rate: #FFF5F7; /* Light Pink */
+
+    /* Font/text values */
+    --unnamed-font-family-manrope: 'Manrope', 'Lato', sans-serif;
+    --unnamed-font-style-normal: normal;
+    --unnamed-font-weight-800: 800;
+    --unnamed-font-weight-normal: 400;
+    --unnamed-font-weight-bold: 700;
+    --unnamed-font-size-14: 14px;
+    --unnamed-font-size-18: 18px;
+    --unnamed-font-size-24: 24px;
+    --unnamed-character-spacing-0: 0px;
+    --unnamed-line-spacing-19: 1.35;
+    --unnamed-line-spacing-24: 1.35;
+    --unnamed-line-spacing-33: 1.375;
+    --unnamed-text-transform-capitalize: capitalize;
+}
+
+/* Basic Reset & Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--unnamed-font-family-manrope);
+    background-color: var(--unnamed-color-f6f6f6);
+    color: var(--unnamed-color-072635);
+    line-height: var(--unnamed-line-spacing-19);
+    font-size: var(--unnamed-font-size-14);
+    overflow-x: hidden;
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
+/* Main Container */
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: var(--unnamed-color-ffffff);
+    border-bottom: 1px solid var(--unnamed-color-ededed);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    .logo {
+        max-width: 10rem;
+        font-size: 1.5em;
+        font-weight: var(--unnamed-font-weight-bold);
+        color: var(--unnamed-color-007bc7);
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+
+        h1 {
+            display: none;
+        }
+
+        .logo-icon {
+            margin-right: 8px;
+            color: var(--unnamed-color-007bc7);
+        }
+    }
+
+    .main-nav {
+        ul {
+            display: flex;
+            gap: 15px;
+
+            li {
+                a {
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 15px;
+                    border-radius: 20px;
+                    font-family: var(--unnamed-font-family-manrope);
+                    font-weight: var(--unnamed-font-weight-bold);
+                    font-size: var(--unnamed-font-size-14);
+                    color: var(--unnamed-color-707070);
+                    transition: background-color 0.4s ease, color 0.4s ease;
+                    white-space: nowrap;
+
+                    &:hover,
+                    &.active {
+                        background-color: var(--activestate_bg_1);
+                        color: var(--unnamed-color-ffffff);
+                    }
+
+                    .nav-icon {
+                        margin-right: 8px;
+                    }
+                }
+            }
+
+            @media (max-width: 768px) {
+                display: none;
+            }
+        }
+    }
+
+    .user-profile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+
+        .profile-pic {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            white-space: nowrap;
+            border-right: 1px solid var(--unnamed-color-ededed);
+            padding-right: 1rem;
+
+            .user-name {
+                font-weight: var(--unnamed-font-weight-bold);
+                color: var(--unnamed-color-072635);
+            }
+
+            .user-title {
+                font-weight: var(--unnamed-font-weight-normal);
+                color: var(--unnamed-color-707070);
+            }
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 15px;
+            color: var(--unnamed-color-707070);
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-left: 0.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
+    }
+
+    .mobile-menu {
+        display: none;
+        border: none;
+        background-color: unset;
+        font-size: 2rem;
+        color: var(--unnamed-color-072635);
+
+        @media (max-width: 768px) {
+            display: block;
+        }
+    }
+}
+
+/* Main Content Area */
+.main-content {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        padding: .5rem;
+        gap: 10px;
+        max-width: 100%;
+    }
+}
+
+/* Card Base Style */
+.card {
+    background-color: var(--unnamed-color-ffffff);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+    @media (max-width: 425px) {
+        padding: 15px;
+        border-radius: 12px;
+    }
+}
+
+/* Sidebar Left (Patients) */
+.sidebar-left {
+    background-color: var(--unnamed-color-ffffff);
+    padding: 0;
+    box-shadow: none;
+    border-radius: 16px;
+    overflow: hidden;
+    height: fit-content;
+
+    .sidebar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 20px 10px 20px;
+        border-bottom: 1px solid var(--unnamed-color-ededed);
+
+        h2 {
+            font-weight: var(--unnamed-font-weight-800);
+            font-size: var(--unnamed-font-size-24);
+            line-height: var(--unnamed-line-spacing-33);
+            color: var(--unnamed-color-072635);
+            margin-bottom: 0;
+        }
+
+        .search-icon {
+            font-size: 1.2em;
+            color: var(--unnamed-color-707070);
+            cursor: pointer;
+        }
+    }
+
+    .patient-list {
+        padding: 10px 0;
+        max-height: 100vh;
+        overflow-y: auto;
+
+        li {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--unnamed-color-f6f6f6);
+            transition: background-color 0.2s ease;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background-color: var(--unnamed-color-f6f6f6);
+            }
+
+            &.active {
+                background-color: var(--activestate_bg_2);
+
+                .name {
+                    font-weight: var(--unnamed-font-weight-bold);
+                }
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                margin-right: 15px;
+                object-fit: cover;
+                flex-shrink: 0;
+            }
+
+            .patient-info {
+                flex-grow: 1;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+
+                span {
+                    display: block;
+                }
+
+                .name {
+                    font-weight: var(--unnamed-font-weight-bold);
+                    color: var(--unnamed-color-072635);
+                }
+
+                .details {
+                    font-weight: var(--unnamed-font-weight-normal);
+                    color: var(--unnamed-color-707070);
+                }
+            }
+
+            .options-icon {
+                color: var(--unnamed-color-cbc8d4);
+                font-weight: bold;
+                cursor: pointer;
+                margin-left: 10px;
+                flex-shrink: 0;
+
+                img {
+                    width: 1rem;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}
+
+/* Center Content */
+.content-center {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    h2 {
+        font-weight: var(--unnamed-font-weight-800);
+        font-size: var(--unnamed-font-size-24);
+        line-height: var(--unnamed-line-spacing-33);
+        color: var(--unnamed-color-072635);
+    }
+
+    .chart-card,
+    .diagnosis-table {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .chart-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        gap: 10px;
+        padding-right: 1.5rem;
+
+        h3 {
+            font-weight: var(--unnamed-font-weight-bold);
+            font-size: var(--unnamed-font-size-18);
+            line-height: var(--unnamed-line-spacing-24);
+            color: var(--unnamed-color-072635);
+            text-transform: var(--unnamed-text-transform-capitalize);
+            margin-bottom: 0;
+        }
+
+        select {
+            padding: 5px 10px;
+            border: none;
+            font-size: var(--unnamed-font-size-14);
+            background-color: unset;
+            color: var(--unnamed-color-072635);
+            font-family: var(--unnamed-font-family-manrope);
+        }
+    }
+
+    .chart-area {
+        display: flex;
+        gap: 20px;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: var(--bg-chart);
+
+        @media (max-width: 425px) {
+            flex-direction: column;
+        }
+
+        .chart-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: var(--unnamed-font-size-14);
+            color: var(--unnamed-color-072635);
+            white-space: nowrap;
+            flex-shrink: 0;
+            width: 26%;
+
+            .chart-legend-item {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+
+                div {
+                    display: flex;
+                    align-items: center;
+                    gap: .5rem;
+                    font-weight: var(--unnamed-font-weight-bold);
+
+                    .dot {
+                        display: inline-block;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        margin-right: 8px;
+                        vertical-align: middle;
+                    }
+
+                    .systolic {
+                        background-color: var(--unnamed-color-705aaa);
+                    }
+
+                    .diastolic {
+                        background-color: var(--color-diastolic-pink);
+                    }
+                }
+
+                .current-value {
+                    font-size: 1.8em;
+                    font-weight: var(--unnamed-font-weight-bold);
+                    color: var(--unnamed-color-072635);
+                    margin-bottom: 5px;
+
+                    .trend {
+                        display: block;
+                        font-size: 0.55em;
+                        font-weight: var(--unnamed-font-weight-normal);
+                        color: var(--unnamed-color-707070);
+                        white-space: normal;
+
+                        .up {
+                            color: var(--unnamed-color-0bd984);
+                        }
+
+                        .down {
+                            color: var(--color-trend-down-red);
+                        }
+                    }
+                }
+
+                .systolic-trend, .diastolic-trend {
+                    i {
+                        display: inline-block;
+                        margin-right: .5rem;
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+
+            hr {
+                background-color: var(--unnamed-color-707070);
+            }
+        }
+
+        .chart-placeholder {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            min-width: 0;
+
+            canvas {
+                max-height: 18rem;
+
+                @media (max-width: 768px) {
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .chart-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85em;
+            color: var(--unnamed-color-707070);
+            padding-top: 10px;
+            border-top: 1px solid var(--unnamed-color-ededed);
+            margin-top: auto;
+            overflow: hidden;
+
+            span {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 0 2px;
+            }
+        }
+    }
+
+    .diagnosis-table {
+        .diagnosis-table-scrollable {
+            height: 8rem;
+            overflow-x:auto;
+            overflow-y: scroll;
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background-color: white;
+
+                th,
+                td {
+                    padding: 12px 15px;
+                    text-align: left;
+                }
+
+                th {
+                    position: sticky;
+                    top: 0;
+                    background-color: var(--unnamed-color-ededed);
+                    font-weight: bold;
+
+                    &:first-child {
+                        border-radius: 24px 0 0 24px;
+                    }
+
+                    &:last-child {
+                        border-radius: 0 24px 24px 0;
+                    }
+                }
+
+                tbody {
+                    tr {
+                        border-bottom: 1px solid var(--unnamed-color-ededed);
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: var(--unnamed-color-f6f6f6);
+                        }
+                    }
+                }
+            }
+
+            @media (max-width: 425px) {
+                max-width: 378px;
+            }
+
+            @media (max-width: 375px) {
+                max-width: 328px;
+            }
+
+            @media (max-width: 320px) {
+                max-width: 274px;
+            }
+        }
+    }
+}
+
+/* Info Cards Container */
+.info-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    @media (max-width: 425px) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* Info Card Styles */
+.info-card {
+    padding: 25px 15px;
+    border-radius: 12px;
+
+    .card-icon {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+
+    &.respiratory {
+        background-color: var(--bg-respiratory);
+
+        .card-icon {
+            color: var(--color-respiratory-blue);
+        }
+    }
+
+    &.temperature {
+        background-color: var(--bg-temperature);
+
+        .card-icon {
+            color: var(--color-temperature-red);
+        }
+    }
+
+    &.heart-rate {
+        background-color: var(--bg-heart-rate);
+
+        .card-icon {
+            color: var(--color-heart-pink);
+        }
+    }
+
+    .card-label {
+        font-family: var(--unnamed-font-family-manrope);
+        font-style: var(--unnamed-font-style-normal);
+        font-weight: var(--unnamed-font-weight-normal);
+        font-size: var(--unnamed-font-size-14);
+        line-height: var(--unnamed-line-spacing-19);
+        letter-spacing: var(--unnamed-character-spacing-0);
+        color: var(--unnamed-color-072635);
+        margin-bottom: 5px;
+    }
+
+    .card-value {
+        font-family: var(--unnamed-font-family-manrope);
+        font-weight: var(--unnamed-font-weight-800);
+        font-size: 1.8em;
+        line-height: 1.2;
+        color: var(--unnamed-color-072635);
+        margin-bottom: 12px;
+        word-break: break-all;
+
+        @media (max-width: 425px) {
+            font-size: 1.5em;
+        }
+    }
+
+    .card-status {
+        font-family: var(--unnamed-font-family-manrope);
+        font-style: var(--unnamed-font-style-normal);
+        font-weight: var(--unnamed-font-weight-normal);
+        font-size: var(--unnamed-font-size-14);
+        line-height: var(--unnamed-line-spacing-19);
+        letter-spacing: var(--unnamed-character-spacing-0);
+        color: var(--unnamed-color-707070);
+
+        &.lower {
+            color: var(--color-trend-down-red);
+        }
+
+        &.higher {
+            color: var(--unnamed-color-0bd984);
+        }
+
+        & i {
+            display: inline-block;
+            margin-right: .5rem;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+/* Sidebar Right (Patient Details) */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .sidebar-right {
+        padding: 24px;
+        text-align: center;
+        background-color: var(--unnamed-color-ffffff);
+        border-radius: 16px;
+        height: fit-content;
+
+        .patient-photo-large {
+            width: 11.25rem;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            object-fit: cover;
+
+            @media (max-width: 425px) {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+        }
+
+        h3 {
+            font-weight: var(--unnamed-font-weight-800);
+            font-size: var(--unnamed-font-size-24);
+            line-height: var(--unnamed-line-spacing-33);
+            color: var(--unnamed-color-072635);
+            margin-bottom: 25px;
+            word-break: break-word;
+
+            @media (max-width: 425px) {
+                font-size: 1.15rem;
+                line-height: 1.4;
+            }
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--unnamed-color-ededed);
+
+            &:last-of-type {
+                border-bottom: none;
+                margin-bottom: 25px;
+            }
+
+            .icon {
+                font-size: 1.5em;
+                color: var(--unnamed-color-707070);
+                margin-right: 15px;
+                width: 42px;
+                text-align: center;
+                flex-shrink: 0;
+
+                @media (max-width: 425px) {
+                    font-size: 1.3em;
+                    margin-right: 10px;
+                }
+            }
+
+            div {
+                overflow: hidden;
+            }
+
+            .label, .value {
+                display: block;
+                font-family: var(--unnamed-font-family-manrope);
+                font-style: var(--unnamed-font-style-normal);
+                font-size: var(--unnamed-font-size-14);
+                line-height: var(--unnamed-line-spacing-19);
+                letter-spacing: var(--unnamed-character-spacing-0);
+            }
+
+            .label {
+                font-weight: var(--unnamed-font-weight-normal);
+                font-size: var(--unnamed-font-size-14);
+                color: var(--unnamed-color-707070);
+                margin-bottom: 2px;
+                white-space: nowrap;
+
+                @media (max-width: 425px) {
+                    font-size: 0.9em;
+                }
+            }
+
+            .value {
+                font-weight: var(--unnamed-font-weight-bold);
+                color: var(--unnamed-color-072635);
+                white-space: normal;
+                word-break: break-word;
+
+                @media (max-width: 425px) {
+                    font-size: 1em;
+                }
+            }
+        }
+
+        .show-info-btn {
+            background-color: var(--activestate_bg_1);
+            color: var(--unnamed-color-072635);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: var(--unnamed-font-family-manrope);
+            font-weight: var(--unnamed-font-weight-bold);
+            font-size: var(--unnamed-font-size-14);
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+
+            &:hover {
+                opacity: 0.85;
+            }
+
+            @media (max-width: 425px) {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+        }
+    }
+
+    .lab-list-container {
+        h2 {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+
+        div {
+            .lab-list-item {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+                padding-inline: 1rem;
+                padding-block: .5rem;
+                text-align: left;
+                cursor: pointer;
+
+                span {
+                    flex-grow: 1;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: var(--unnamed-color-072635);
+                    font-size: 1.2em;
+                }
+
+                &:hover,
+                &.selected {
+                    background-color: var(--unnamed-color-f6f6f6);
+                }
+            }
+        }
+    }
+}

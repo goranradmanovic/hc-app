@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tech.Care Dashboard</title>
+        <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    </head>
+    <body>
+        <div class="dashboard-container">
+            <header class="main-header">
+                <div class="logo">
+                    <span class="logo-icon">
+                        <img src="./assets/images/logo.svg" alt="Main logo image" />
+                    </span>
+                    <h1>MSD Dashboard</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li>
+                            <a href="#"><span class="nav-icon"><img src="./assets/images/home.svg" alt="Home icon" /></span> Overview</a>
+                        </li>
+                        <li>
+                            <a href="#" class="active"><span class="nav-icon"><img src="./assets/images/patients.svg" alt="Patients icon" /></span> Patients</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="nav-icon"><img src="./assets/images/calendar.svg" alt="Calendar icon" /></span> Schedule</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="nav-icon"><img src="./assets/images/chat.svg" alt="Chat icon" /></span> Message</a>
+                        </li>
+                        <li>
+                            <a href="#"><span class="nav-icon"><img src="./assets/images/credit_card.svg" alt="Credit card icon" /></span> Transactions</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="user-profile">
+                    <img src="./assets/images/profile/dr_jose.png" alt="Dr. Jose Simmons" class="profile-pic">
+                    <div class="user-info">
+                        <span class="user-name">Dr. Jose Simmons</span>
+                        <span class="user-title">General Practitioner</span>
+                    </div>
+                    <div class="profile-actions">
+                        <span class="icon"><img src="./assets/images/settings.svg" alt="Settings icon" /></span>
+                        <span class="icon"><img src="./assets/images/more_vert.svg" alt="More vertical icon" /></span>
+                    </div>
+                </div>
+
+                <button class="mobile-menu">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>
+            </header>
+
+            <main class="main-content">
+                <aside class="sidebar sidebar-left">
+                    <div class="sidebar-header">
+                        <h2>Patients</h2>
+                        <span class="search-icon">
+                            <img src="./assets/images/search.svg" alt="Search icon" />
+                        </span>
+                    </div>
+                    <div id="patient-list"></div>
+                </aside>
+
+                <section class="content-center">
+                    <div class="card chart-card">
+                        <h2>Diagnosis History</h2>
+
+                        <div class="chart-area">
+                            <div class="chart-placeholder">
+                                <div class="chart-header">
+                                    <h3>Blood Pressure</h3>
+                                    <select>
+                                        <option>Last 6 months</option>
+                                        <option>Last 12 months</option>
+                                        <option>All time</option>
+                                    </select>
+                                </div>
+                                <canvas id="bloodPressureChart"></canvas>
+                            </div>
+                            <div class="chart-legend">
+                                <div class="chart-legend-item">
+                                    <div><span class="dot systolic"></span> Systolic</div>
+                                    <div class="current-value systolic-value"></div>
+                                    <span class="systolic-trend"></span>
+                                </div>
+                                <hr />
+                                <div class="chart-legend-item">
+                                    <div><span class="dot diastolic"></span> Diastolic</div>
+                                    <div class="current-value diastolic-value"></div>
+                                    <span class="diastolic-trend"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-cards-container">
+                            <div class="card info-card respiratory">
+                                <div class="card-icon"><img src="./assets/images/respiratory-rate.svg" alt="Respiratory Rate icon" /></div>
+                                <div class="card-label">Respiratory Rate</div>
+                                <div class="card-value"><!--20 bpm--></div>
+                                <div class="card-status"><!--Normal--></div>
+                            </div>
+                            <div class="card info-card temperature">
+                                <div class="card-icon"><img src="./assets/images/temperature.svg" alt="Temperature icon" /></div>
+                                <div class="card-label">Temperature</div>
+                                <div class="card-value"><!--98.6°F--></div>
+                                <div class="card-status"><!--Normal--></div>
+                            </div>
+                            <div class="card info-card heart-rate">
+                                <div class="card-icon"><img src="./assets/images/heart-bpm.svg" alt="Heart BPM icon" /></div>
+                                <div class="card-label">Heart Rate</div>
+                                <div class="card-value"><!--78 bpm--></div>
+                                <div class="card-status lower"><!--Lower than Average--></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card diagnosis-table">
+                        <h2>Diagnostic List</h2>
+
+                        <div class="diagnosis-table-scrollable">
+                            <table id="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Problem/Diagnosis</th>
+                                        <th>Description</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="sidebar">
+                    <div class="sidebar-right card patient-details">
+                        <img src="./assets/images/avatar-default.svg" alt="Avatar default" class="patient-photo-large">
+                        <h3><!--Jessica Taylor--></h3>
+
+                        <div class="detail-item">
+                            <span class="icon"><img src="./assets/images/birth.svg" alt="Birth icon" /></span>
+                            <div>
+                                <span class="label">Date Of Birth</span>
+                                <span class="value birth"><!--August 23, 1996--></span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon"><img src="./assets/images/female.svg" alt="Female icon" /></span>
+                            <div>
+                                <span class="label">Gender</span>
+                                <span class="value gender"><!--Female--></span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon"><img src="./assets/images/phone.svg" alt="Female icon" /></span>
+                            <div>
+                                <span class="label">Contact Info.</span>
+                                <span class="value phone"><!--(415) 555-1234--></span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon"><img src="./assets/images/phone.svg" alt="Phone icon" /></span>
+                            <div>
+                                <span class="label">Emergency Contacts</span>
+                                <span class="value emergency"><!--(415) 555-5678--></span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <span class="icon"><img src="./assets/images/insurance.svg" alt="Insurance icon" /></span>
+                            <div>
+                                <span class="label">Insurance Provider</span>
+                                <span class="value insurance"><!--Sunrise Health Insurance--></span>
+                            </div>
+                        </div>
+                        <button class="show-info-btn">Show All Information</button>
+                    </div>
+
+                    <div class="sidebar-right card lab-list-container">
+                        <h2>Lab Results</h2>
+                        <div id="list"></div>
+                    </div>
+                </aside>
+            </main>
+        </div>
+    </body>
+    <script src="./assets/js/helpers.js"></script>
+    <script src="./assets/js/patients-list.js"></script>
+    <script src="./assets/js/patients-profile.js"></script>
+    <script src="./assets/js/diagnosis.js"></script>
+    <script src="./assets/js/lab-results.js"></script>
+    <script src="./assets/js/diagnostic-list.js"></script>
+    <script src="./assets/js/chart.js"></script>
+    <script src="./assets/js/utils.js"></script>
+    <script src="./assets/js/index.js"></script>
+</html>
